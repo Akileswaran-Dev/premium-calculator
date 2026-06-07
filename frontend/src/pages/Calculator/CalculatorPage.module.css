@@ -1,0 +1,173 @@
+.page {
+  position: relative;
+  min-height: calc(100vh - var(--header-height, 70px));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-8, 32px) var(--space-4, 16px);
+  background-color: var(--bg-base);
+  overflow: hidden;
+}
+
+/* ── Background Decorative Orbs ──────────────────────────────────────────── */
+.orbs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.orb {
+  position: absolute;
+  border-radius: var(--radius-full);
+  filter: blur(100px);
+  opacity: 0.15;
+}
+
+.orb1 {
+  top: 15%;
+  left: 20%;
+  width: 350px;
+  height: 350px;
+  background: var(--accent-primary);
+  animation: floatOrb 20s infinite ease-in-out alternate;
+}
+
+.orb2 {
+  bottom: 15%;
+  right: 20%;
+  width: 400px;
+  height: 400px;
+  background: var(--accent-secondary);
+  animation: floatOrb 25s infinite ease-in-out alternate-reverse;
+}
+
+@keyframes floatOrb {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(40px, -40px) scale(1.15);
+  }
+}
+
+/* ── Container & Glass Card ──────────────────────────────────────────────── */
+.container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+}
+
+.calculatorCard {
+  background: var(--glass-bg);
+  backdrop-filter: var(--blur-md);
+  -webkit-backdrop-filter: var(--blur-md);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-2xl, 24px);
+  padding: var(--space-6, 24px);
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  flex-direction: column;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.calculatorCard:hover {
+  border-color: var(--glass-border-hover);
+  box-shadow: 0 20px 80px hsla(0, 0%, 0%, 0.65), var(--shadow-glow);
+}
+
+/* ── Header Decorator ────────────────────────────────────────────────────── */
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-5, 20px);
+}
+
+.statusLights {
+  display: flex;
+  gap: 6px;
+}
+
+.statusLights span {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+}
+
+.lightRed { background-color: #ff5f56; }
+.lightYellow { background-color: #ffbd2e; }
+.lightGreen { background-color: #27c93f; }
+
+.titleBadge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2, 8px);
+  font-size: var(--text-xs, 12px);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.1em;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm, 6px);
+  border: 1px solid var(--glass-border);
+}
+
+.pulseDot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background-color: var(--accent-secondary);
+  box-shadow: 0 0 8px var(--accent-secondary);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+
+/* ── Footer Info ─────────────────────────────────────────────────────────── */
+.cardFooter {
+  margin-top: var(--space-5, 20px);
+  text-align: center;
+  font-size: var(--text-xs, 11px);
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+/* ── Responsive Adaptation ────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .page {
+    padding: var(--space-4, 16px) 0;
+    align-items: stretch;
+  }
+  .container {
+    max-width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .calculatorCard {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    height: 100%;
+    padding: var(--space-4, 16px);
+    justify-content: space-between;
+  }
+}

@@ -1,0 +1,270 @@
+/* =============================================================================
+   Premium Calculator — Global CSS Design System
+   globals.css — CSS Custom Properties, Reset, Typography, Base Styles
+   ============================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* ── CSS Custom Properties ─────────────────────────────────────────────────── */
+
+:root {
+  /* --- Color Palette: Dark Mode (default) --- */
+  --bg-base:          hsl(240, 20%, 8%);
+  --bg-elevated:      hsl(242, 22%, 11%);
+  --bg-overlay:       hsl(244, 24%, 14%);
+
+  --glass-bg:         hsla(255, 30%, 25%, 0.35);
+  --glass-bg-hover:   hsla(255, 30%, 30%, 0.45);
+  --glass-border:     hsla(255, 60%, 80%, 0.12);
+  --glass-border-hover: hsla(255, 60%, 80%, 0.22);
+
+  --accent-primary:   hsl(262, 83%, 68%);
+  --accent-secondary: hsl(199, 89%, 60%);
+  --accent-gradient:  linear-gradient(135deg, hsl(262, 83%, 68%), hsl(199, 89%, 60%));
+  --accent-glow:      hsla(262, 83%, 68%, 0.4);
+
+  --btn-number:       hsla(255, 25%, 30%, 0.7);
+  --btn-number-hover: hsla(255, 25%, 38%, 0.85);
+  --btn-operator:     hsla(262, 60%, 45%, 0.8);
+  --btn-operator-hover: hsla(262, 60%, 52%, 0.9);
+  --btn-equals:       var(--accent-gradient);
+  --btn-clear:        hsla(0, 60%, 45%, 0.7);
+  --btn-clear-hover:  hsla(0, 60%, 52%, 0.85);
+  --btn-function:     hsla(199, 60%, 35%, 0.7);
+  --btn-function-hover: hsla(199, 60%, 42%, 0.85);
+
+  --text-primary:     hsl(0, 0%, 97%);
+  --text-secondary:   hsl(240, 10%, 65%);
+  --text-muted:       hsl(240, 10%, 45%);
+  --text-accent:      var(--accent-primary);
+
+  --success:          hsl(142, 72%, 55%);
+  --error:            hsl(0, 84%, 65%);
+  --warning:          hsl(38, 90%, 58%);
+
+  /* --- Spacing Scale --- */
+  --space-1:   0.25rem;   /* 4px  */
+  --space-2:   0.5rem;    /* 8px  */
+  --space-3:   0.75rem;   /* 12px */
+  --space-4:   1rem;      /* 16px */
+  --space-5:   1.25rem;   /* 20px */
+  --space-6:   1.5rem;    /* 24px */
+  --space-8:   2rem;      /* 32px */
+  --space-10:  2.5rem;    /* 40px */
+  --space-12:  3rem;      /* 48px */
+  --space-16:  4rem;      /* 64px */
+  --space-20:  5rem;      /* 80px */
+  --space-24:  6rem;      /* 96px */
+
+  /* --- Typography Scale --- */
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-lg:   1.125rem;
+  --text-xl:   1.25rem;
+  --text-2xl:  1.5rem;
+  --text-3xl:  1.875rem;
+  --text-4xl:  2.25rem;
+  --text-5xl:  3rem;
+  --text-6xl:  3.75rem;
+
+  /* --- Font Families --- */
+  --font-sans:  'Outfit', 'Inter', system-ui, sans-serif;
+  --font-mono:  'JetBrains Mono', 'Fira Code', monospace;
+
+  /* --- Border Radius --- */
+  --radius-sm:   0.375rem;
+  --radius-md:   0.625rem;
+  --radius-lg:   1rem;
+  --radius-xl:   1.5rem;
+  --radius-2xl:  2rem;
+  --radius-full: 9999px;
+
+  /* --- Shadows --- */
+  --shadow-sm:  0 1px 3px hsla(0, 0%, 0%, 0.3);
+  --shadow-md:  0 4px 16px hsla(0, 0%, 0%, 0.4);
+  --shadow-lg:  0 8px 32px hsla(0, 0%, 0%, 0.5);
+  --shadow-xl:  0 16px 64px hsla(0, 0%, 0%, 0.6);
+  --shadow-glow: 0 0 32px var(--accent-glow);
+
+  /* --- Blur & Glass --- */
+  --blur-sm:  blur(8px);
+  --blur-md:  blur(16px);
+  --blur-lg:  blur(24px);
+
+  /* --- Transitions --- */
+  --transition-fast:   150ms ease;
+  --transition-base:   250ms ease;
+  --transition-slow:   400ms ease;
+  --transition-spring: 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* --- Layout --- */
+  --sidebar-width:      260px;
+  --navbar-height:      64px;
+  --content-max-width:  1400px;
+}
+
+
+/* ── Light Theme Overrides ──────────────────────────────────────────────────── */
+
+[data-theme="light"] {
+  --bg-base:          hsl(240, 20%, 96%);
+  --bg-elevated:      hsl(240, 15%, 92%);
+  --bg-overlay:       hsl(240, 10%, 88%);
+
+  --glass-bg:         hsla(255, 30%, 100%, 0.7);
+  --glass-bg-hover:   hsla(255, 30%, 100%, 0.85);
+  --glass-border:     hsla(255, 30%, 50%, 0.15);
+  --glass-border-hover: hsla(255, 30%, 50%, 0.28);
+
+  --btn-number:       hsla(255, 15%, 90%, 0.9);
+  --btn-number-hover: hsla(255, 15%, 83%, 1);
+  --btn-operator:     hsla(262, 50%, 88%, 0.9);
+  --btn-operator-hover: hsla(262, 50%, 80%, 1);
+  --btn-clear:        hsla(0, 55%, 90%, 0.9);
+  --btn-clear-hover:  hsla(0, 55%, 82%, 1);
+  --btn-function:     hsla(199, 50%, 88%, 0.9);
+  --btn-function-hover: hsla(199, 50%, 80%, 1);
+
+  --text-primary:     hsl(240, 20%, 10%);
+  --text-secondary:   hsl(240, 12%, 35%);
+  --text-muted:       hsl(240, 10%, 55%);
+
+  --shadow-sm:  0 1px 3px hsla(240, 20%, 20%, 0.08);
+  --shadow-md:  0 4px 16px hsla(240, 20%, 20%, 0.12);
+  --shadow-lg:  0 8px 32px hsla(240, 20%, 20%, 0.16);
+  --shadow-xl:  0 16px 64px hsla(240, 20%, 20%, 0.2);
+  --shadow-glow: 0 0 32px hsla(262, 83%, 68%, 0.2);
+}
+
+
+/* ── CSS Reset ──────────────────────────────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: var(--text-primary);
+  background-color: var(--bg-base);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Background gradient */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 20%, hsla(262, 80%, 30%, 0.25) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, hsla(199, 80%, 30%, 0.2) 0%, transparent 50%),
+    linear-gradient(160deg, var(--bg-base) 0%, hsl(260, 25%, 12%) 100%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+[data-theme="light"] body::before {
+  background:
+    radial-gradient(ellipse at 20% 20%, hsla(262, 60%, 85%, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, hsla(199, 60%, 85%, 0.25) 0%, transparent 50%),
+    linear-gradient(160deg, var(--bg-base) 0%, hsl(250, 20%, 93%) 100%);
+}
+
+img, svg { display: block; max-width: 100%; }
+input, button, textarea, select { font: inherit; }
+p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; }
+button { cursor: pointer; border: none; background: none; }
+
+/* ── Base Typography ────────────────────────────────────────────────────────── */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+h1 { font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl)); }
+h2 { font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl)); }
+h3 { font-size: clamp(var(--text-xl), 3vw, var(--text-3xl)); }
+h4 { font-size: var(--text-xl); }
+h5 { font-size: var(--text-lg); }
+h6 { font-size: var(--text-base); }
+
+p { color: var(--text-secondary); line-height: 1.7; }
+
+code, pre {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+/* ── Scrollbar Styling ──────────────────────────────────────────────────────── */
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--glass-border);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover { background: hsla(255, 60%, 80%, 0.25); }
+
+/* ── Focus Styles ───────────────────────────────────────────────────────────── */
+
+:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Utility Classes ────────────────────────────────────────────────────────── */
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--blur-md);
+  -webkit-backdrop-filter: var(--blur-md);
+}
+
+.gradient-text {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Reduced Motion ─────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

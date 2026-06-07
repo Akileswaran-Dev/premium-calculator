@@ -1,0 +1,288 @@
+.container {
+  max-width: var(--content-max-width, 1200px);
+  margin: 0 auto;
+  padding: var(--space-8, 32px) var(--space-4, 16px);
+  min-height: calc(100vh - var(--navbar-height, 64px) - 60px);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: var(--space-6, 24px);
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6, 24px);
+}
+
+.card {
+  padding: var(--space-6, 24px);
+  border-radius: var(--radius-lg, 16px);
+  box-shadow: var(--shadow-md);
+  animation: fadeIn 0.4s ease-out;
+}
+
+.profileCard {
+  text-align: center;
+}
+
+.avatarSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: var(--space-4, 16px);
+}
+
+.avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: var(--accent-gradient);
+  color: #fff;
+  font-size: var(--text-4xl, 36px);
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--shadow-glow);
+  margin-bottom: var(--space-4, 16px);
+}
+
+.profileCard h2 {
+  font-size: var(--text-2xl, 24px);
+  margin-bottom: var(--space-1, 4px);
+}
+
+.email {
+  font-size: var(--text-sm, 14px);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-2, 8px);
+}
+
+.joined {
+  font-size: var(--text-xs, 12px);
+  color: var(--text-muted);
+}
+
+.divider {
+  border: 0;
+  height: 1px;
+  background: var(--glass-border);
+  margin: var(--space-5, 20px) 0;
+}
+
+.editForm, .passwordForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4, 16px);
+  text-align: left;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2, 8px);
+}
+
+.inputGroup label {
+  font-size: var(--text-xs, 12px);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+
+.input {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.12));
+  padding: var(--space-3, 12px);
+  border-radius: var(--radius-md, 10px);
+  color: var(--text-primary);
+  font-size: var(--text-base, 16px);
+  transition: all var(--transition-fast, 150ms) ease;
+}
+
+.input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--accent-primary, #8B5CF6);
+  box-shadow: 0 0 12px var(--accent-glow, rgba(139, 92, 246, 0.25));
+}
+
+.buttonGroup {
+  display: flex;
+  gap: var(--space-3, 12px);
+  margin-top: var(--space-2, 8px);
+}
+
+.saveBtn, .cancelBtn {
+  flex: 1;
+  padding: var(--space-3, 12px);
+  border-radius: var(--radius-md, 10px);
+  font-weight: 600;
+  transition: all var(--transition-fast, 150ms) ease;
+}
+
+.saveBtn {
+  background: var(--accent-gradient);
+  color: #fff;
+}
+
+.saveBtn:hover:not(:disabled) {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.cancelBtn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+}
+
+.cancelBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.profileActions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3, 12px);
+}
+
+.actionBtn {
+  width: 100%;
+  padding: var(--space-3, 12px);
+  border-radius: var(--radius-md, 10px);
+  font-weight: 600;
+  transition: all var(--transition-fast, 150ms) ease;
+}
+
+.editBtn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+}
+
+.editBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.logoutAllBtn {
+  background: hsla(0, 60%, 45%, 0.15);
+  border: 1px solid var(--btn-clear);
+  color: var(--error, #f87171);
+}
+
+.logoutAllBtn:hover {
+  background: var(--btn-clear);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.successText {
+  color: var(--success, #10b981);
+  font-size: var(--text-sm, 14px);
+  margin-bottom: var(--space-3, 12px);
+  text-align: center;
+}
+
+.errorText {
+  color: var(--error, #f87171);
+  font-size: var(--text-sm, 14px);
+  margin-bottom: var(--space-3, 12px);
+  text-align: center;
+}
+
+/* Stats Card */
+.statsCard h3, .passwordCard h3 {
+  font-size: var(--text-lg, 18px);
+  margin-bottom: var(--space-5, 20px);
+  position: relative;
+  padding-left: var(--space-3, 12px);
+}
+
+.statsCard h3::before, .passwordCard h3::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 3px;
+  background: var(--accent-gradient);
+  border-radius: var(--radius-full);
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4, 16px);
+}
+
+.statBox {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md, 10px);
+  padding: var(--space-5, 20px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1, 4px);
+}
+
+.statVal {
+  font-size: var(--text-3xl, 30px);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.statLbl {
+  font-size: var(--text-xs, 12px);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+/* Change Password Card */
+.changePasswordBtn {
+  background: var(--accent-gradient);
+  color: #fff;
+  padding: var(--space-3, 12px);
+  border-radius: var(--radius-md, 10px);
+  font-weight: 600;
+  transition: all var(--transition-fast, 150ms) ease;
+  width: 100%;
+  margin-top: var(--space-3, 12px);
+}
+
+.changePasswordBtn:hover:not(:disabled) {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.changePasswordBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

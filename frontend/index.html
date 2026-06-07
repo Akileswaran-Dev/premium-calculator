@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO -->
+    <title>CalcPremium — The Cloud-Powered Calculator</title>
+    <meta
+      name="description"
+      content="A premium, full-stack calculator with cloud-synced history, scientific mode, and a stunning design. Built for people who take their calculations seriously."
+    />
+    <meta name="keywords" content="calculator, scientific calculator, calculation history, cloud calculator" />
+    <meta name="author" content="CalcPremium" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="CalcPremium — The Cloud-Powered Calculator" />
+    <meta property="og:description" content="Premium calculator with persistent history, scientific mode, and a stunning interface." />
+    <meta property="og:url" content="https://calcpremium.vercel.app" />
+
+    <!-- Theme -->
+    <meta name="theme-color" content="#8B5CF6" />
+
+    <!-- Preconnect for Google Fonts performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Color scheme hint (prevents flash of wrong theme) -->
+    <script>
+      try {
+        const saved = localStorage.getItem('calc-theme');
+        if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else if (saved === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

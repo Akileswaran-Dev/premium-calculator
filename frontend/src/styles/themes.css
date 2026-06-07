@@ -1,0 +1,66 @@
+/* =============================================================================
+   Premium Calculator — Theme CSS
+   themes.css — Theme-specific overrides and system preference detection
+   ============================================================================= */
+
+/* ── System preference: Auto Dark ───────────────────────────────────────────── */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg-base:          hsl(240, 20%, 96%);
+    --bg-elevated:      hsl(240, 15%, 92%);
+    --bg-overlay:       hsl(240, 10%, 88%);
+    --glass-bg:         hsla(255, 30%, 100%, 0.7);
+    --glass-bg-hover:   hsla(255, 30%, 100%, 0.85);
+    --glass-border:     hsla(255, 30%, 50%, 0.15);
+    --glass-border-hover: hsla(255, 30%, 50%, 0.28);
+    --btn-number:       hsla(255, 15%, 90%, 0.9);
+    --btn-number-hover: hsla(255, 15%, 83%, 1);
+    --btn-operator:     hsla(262, 50%, 88%, 0.9);
+    --btn-operator-hover: hsla(262, 50%, 80%, 1);
+    --btn-clear:        hsla(0, 55%, 90%, 0.9);
+    --btn-clear-hover:  hsla(0, 55%, 82%, 1);
+    --btn-function:     hsla(199, 50%, 88%, 0.9);
+    --btn-function-hover: hsla(199, 50%, 80%, 1);
+    --text-primary:     hsl(240, 20%, 10%);
+    --text-secondary:   hsl(240, 12%, 35%);
+    --text-muted:       hsl(240, 10%, 55%);
+    --shadow-sm:  0 1px 3px hsla(240, 20%, 20%, 0.08);
+    --shadow-md:  0 4px 16px hsla(240, 20%, 20%, 0.12);
+    --shadow-lg:  0 8px 32px hsla(240, 20%, 20%, 0.16);
+    --shadow-xl:  0 16px 64px hsla(240, 20%, 20%, 0.2);
+    --shadow-glow: 0 0 32px hsla(262, 83%, 68%, 0.2);
+    color-scheme: light;
+  }
+}
+
+/* ── Explicit dark theme ─────────────────────────────────────────────────────── */
+
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+/* ── Theme transition (smooth color change) ──────────────────────────────────── */
+
+html {
+  transition:
+    background-color var(--transition-slow),
+    color var(--transition-slow);
+}
+
+*, *::before, *::after {
+  transition-property: background-color, border-color, color, box-shadow;
+  transition-duration: 300ms;
+  transition-timing-function: ease;
+}
+
+/* Exclude elements where we don't want color transitions */
+*:where(img, video, canvas, svg, [class*="animate-"]) {
+  transition: none;
+}
