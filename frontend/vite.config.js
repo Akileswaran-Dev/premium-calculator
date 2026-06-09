@@ -40,9 +40,6 @@ export default defineConfig({
             if (id.includes('axios')) {
               return 'axios';
             }
-            if (id.includes('mathjs')) {
-              return 'mathjs';
-            }
             return 'vendor-other';
           }
         },

@@ -1,6 +1,6 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
-from sqlalchemy import func
+from sqlalchemy import func, case
 from datetime import datetime, timezone, time, timedelta
 from app.models.calculation_history import CalculationHistory
 import uuid
@@ -14,6 +14,7 @@ class DashboardService:
         - Today's calculations
         - This week's calculations (since Monday)
         - Recent 5 calculations
+        Consolidates counts into a single query using conditional CASE aggregation.
         """
         # Base filter for active history items of current user
         base_filter = (
@@ -21,30 +22,26 @@ class DashboardService:
             CalculationHistory.is_deleted == False
         )
 
-        # 1. Total calculations
-        total_query = select(func.count(CalculationHistory.id)).where(*base_filter)
-        total_calculations = await db.scalar(total_query) or 0
-
         # Current time boundary calculations (UTC)
         now = datetime.now(timezone.utc)
         today_start = datetime.combine(now.date(), time.min, tzinfo=timezone.utc)
         week_start = today_start - timedelta(days=now.weekday())
 
-        # 2. Today's calculations
-        today_query = select(func.count(CalculationHistory.id)).where(
-            *base_filter,
-            CalculationHistory.created_at >= today_start
-        )
-        today_calculations = await db.scalar(today_query) or 0
+        # Consolidated counts query using conditional aggregation
+        stats_query = select(
+            func.count(CalculationHistory.id).label("total"),
+            func.count(case((CalculationHistory.created_at >= today_start, 1))).label("today"),
+            func.count(case((CalculationHistory.created_at >= week_start, 1))).label("week")
+        ).where(*base_filter)
 
-        # 3. This week's calculations
-        week_query = select(func.count(CalculationHistory.id)).where(
-            *base_filter,
-            CalculationHistory.created_at >= week_start
-        )
-        week_calculations = await db.scalar(week_query) or 0
+        stats_result = await db.execute(stats_query)
+        stats_row = stats_result.fetchone()
 
-        # 4. Recent 5 calculations summary
+        total_calculations = stats_row[0] if stats_row and stats_row[0] is not None else 0
+        today_calculations = stats_row[1] if stats_row and stats_row[1] is not None else 0
+        week_calculations = stats_row[2] if stats_row and stats_row[2] is not None else 0
+
+        # Recent 5 calculations summary
         recent_query = select(CalculationHistory).where(
             *base_filter
         ).order_by(
