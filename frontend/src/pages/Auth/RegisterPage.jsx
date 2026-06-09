@@ -64,7 +64,7 @@ export default function RegisterPage() {
     setIsSubmitting(true);
     try {
       await register(displayName, email, password);
-      navigate('/calculator', { replace: true });
+      navigate('/dashboard', { replace: true });
     } catch (err) {
       console.error(err);
       setError(err.response?.data?.detail || 'Registration failed. This email may already be in use.');

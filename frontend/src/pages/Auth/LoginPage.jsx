@@ -13,7 +13,7 @@ export default function LoginPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Get destination path (for redirects after authentication)
-  const from = location.state?.from?.pathname || '/calculator';
+  const from = location.state?.from?.pathname || '/dashboard';
 
   const handleSubmit = async (e) => {
     e.preventDefault();

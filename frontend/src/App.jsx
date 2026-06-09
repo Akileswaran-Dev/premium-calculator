@@ -6,8 +6,9 @@ import LoginPage from './pages/Auth/LoginPage';
 import RegisterPage from './pages/Auth/RegisterPage';
 import ProfilePage from './pages/Profile/ProfilePage';
 import CalculatorPage from './pages/Calculator/CalculatorPage';
+import HistoryPage from './pages/History/HistoryPage';
+import DashboardPage from './pages/Dashboard/DashboardPage';
 import {
-  HistoryPage,
   NotFoundPage,
 } from './pages/PlaceholderPages';
 
@@ -21,6 +22,14 @@ export default function App() {
         <Route path="/register" element={<RegisterPage />} />
 
         {/* Protected Routes */}
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <DashboardPage />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/calculator"
           element={

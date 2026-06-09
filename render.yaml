@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: premium-calculator-backend
+    runtime: docker
+    dockerContext: backend
+    dockerfilePath: Dockerfile
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: DEBUG
+        value: "false"
+      - key: DATABASE_URL
+        sync: false
+        placeholder: "postgresql+asyncpg://..."
+      - key: JWT_SECRET_KEY
+        sync: false
+        placeholder: "secure-random-secret-key"
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: "15"
+      - key: REFRESH_TOKEN_EXPIRE_DAYS
+        value: "7"
+      - key: CORS_ORIGINS
+        value: "*"
+        placeholder: "comma-separated list of allowed origins"

@@ -6,7 +6,7 @@ export const historyService = {
   updateEntry: (id, data) => api.patch(`/history/${id}`, data),
   deleteEntry: (id) => api.delete(`/history/${id}`),
   bulkDelete: (ids) => api.delete('/history/bulk', { data: { ids } }),
-  deleteAll: () => api.delete('/history/all'),
+  clearHistory: () => api.delete('/history/clear'),
   export: (format = 'csv') =>
     api.get('/history/export', {
       params: { format },

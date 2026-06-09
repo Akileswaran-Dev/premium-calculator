@@ -13,6 +13,7 @@ from app.routers import (
     users_router,
     calculator_router,
     history_router,
+    dashboard_router,
 )
 
 # Configure logging
@@ -72,6 +73,7 @@ app.include_router(auth_router, prefix=settings.API_V1_PREFIX)
 app.include_router(users_router, prefix=settings.API_V1_PREFIX)
 app.include_router(calculator_router, prefix=settings.API_V1_PREFIX)
 app.include_router(history_router, prefix=settings.API_V1_PREFIX)
+app.include_router(dashboard_router, prefix=settings.API_V1_PREFIX)
 
 
 # ── Root Endpoint ─────────────────────────────────────────────────────────────
